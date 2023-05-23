@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cocktailsRouter = require('./routes/cocktails');
+require('dotenv').config()
+require('./redis')
 
-const PORT = 3000;
+const PORT = process.env.port;
 const app = express();
 
 app.use(bodyParser.json());

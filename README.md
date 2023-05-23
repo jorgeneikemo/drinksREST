@@ -1,5 +1,5 @@
 # About
-REST api created with expressjs. An api for getting different cocktails. Can query by name or ingredients. Can also get by :id. 
+REST api created with expressjs. Caching done with redis. An api for getting different cocktails. Can query by name or ingredients. Can also get by :id.
 
 # Installation
 ```
