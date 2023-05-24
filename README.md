@@ -1,6 +1,12 @@
 # About
 REST api created with expressjs and mysql. Database using the Third normal form for associations. An api for getting different cocktails. Can query by name or ingredients. Can also get by :id.
 
+# Technologies Used
+* Node.js
+* Express.js
+* MySQL
+* Sequelize
+
 # Application Installation and Usage Instructions
 
 1. Clone the repository
@@ -23,7 +29,7 @@ REST api created with expressjs and mysql. Database using the Third normal form 
 6. Populate the database with the expample data provided below.
 7. Call the API
 
-# Environment variables
+# Environment Variables
 ```sh
 DATABASE_USERNAME = "username"
 DATABASE_PASSWORD = "password"
