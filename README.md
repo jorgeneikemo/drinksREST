@@ -1,46 +1,30 @@
 # About
 REST api created with expressjs and mysql. Database using the Third normal form for associations. An api for getting different cocktails. Can query by name or ingredients. Can also get by :id.
 
-# Installation
-```
-Clone repository
-```
-```
-npm install
-```
+# Application Installation and Usage Instructions
 
-# Usage
-
-```
-To get all cocktails: /cocktails
-```
-
-```
-To get cocktail by id: /cocktails/id
-```
-
-```
-To get cocktail by ingredients: e.g. /cocktails?ingredients=gin
-```
-
-```
-To get cocktail by name: e.g. /cocktails?name=margarita
-```
-
-```
-To add a cocktail : post to /cocktails
-e.g.
-
-{
-    "name": "Radler",
-    "ingredients": [
-    "Beer",
-    "Lerum lemon and lime juice",
-    "Club soda"
-    ],
-    "description": "A refreshing drink."
-}
-```
+1. Clone the repository
+2. Install NPM packages
+   ```
+   npm install
+   ```
+3. Create the cocktails database in mysql.
+   ```sql
+   CREATE DATABASE cocktails;
+   ```
+4. .env
+   ```
+   Create .env file and add the environment variables provided below.
+   ```
+5. Run the app to create all the tables in the database
+   ```js
+   npm start
+   ```
+6. Populate the database with the expample data provided below.
+7. Open the page
+   ```
+   http://localhost:3000/
+   ```
 
 # Environment variables
 ```sh
@@ -52,6 +36,17 @@ DIALECTMODEL = "mysql2"
 PORT = "3000"
 HOST = "localhost"
 ```
+
+# Api Endpoints
+
+* ``GET /api/cocktails``: Retrieves a list of all cocktails.
+* ``GET /api/cocktails/:id``: Retrieves a specific cocktail by ID.
+* ``GET /api/cocktails?name=name``: queries by name
+* ``GET /api/cocktails?ingredients=ingredient, ingreedient``: queries by ingredients
+* ``POST /api/cocktails``: Creates a new cocktail. (WIP)
+* ``PUT /api/cocktails/:id``: Updates a cocktail by ID. (WIP)
+* ``DELETE /api/cocktails/:id``: Deletes a cocktail by ID. (WIP)
+
 
 # Database example insert
 ```sql
