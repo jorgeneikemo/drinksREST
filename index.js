@@ -1,6 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cocktailsRouter = require('./routes/cocktails');
+//const cocktailsRouter = require('./routes/cocktails');
+//new
+const cocktailRouter = require('./routes/cocktails');
 require('dotenv').config()
 require('./redis')
 
@@ -11,7 +13,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 //Routes
-app.use('/cocktails', cocktailsRouter);
+//app.use('/cocktails', cocktailsRouter);
+//new
+app.use('/cocktails', cocktailRouter);
 
 // Server start
 app.listen(PORT, () => {
