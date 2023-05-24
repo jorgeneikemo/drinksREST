@@ -21,15 +21,12 @@ REST api created with expressjs and mysql. Database using the Third normal form 
    npm start
    ```
 6. Populate the database with the expample data provided below.
-7. Open the page
-   ```
-   http://localhost:3000/
-   ```
+7. Call the API
 
 # Environment variables
 ```sh
-ADMIN_USERNAME = "username"
-ADMIN_PASSWORD = "password"
+DATABASE_USERNAME = "username"
+DATABASE_PASSWORD = "password"
 DATABASE_NAME = "cocktails"
 DIALECT = "mysql"
 DIALECTMODEL = "mysql2"
