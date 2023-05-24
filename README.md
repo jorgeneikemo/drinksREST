@@ -1,5 +1,5 @@
 # About
-REST api created with expressjs and mysql. An api for getting different cocktails. Can query by name or ingredients. Can also get by :id.
+REST api created with expressjs and mysql. Database using the Third normal form for associations. An api for getting different cocktails. Can query by name or ingredients. Can also get by :id.
 
 # Installation
 ```
