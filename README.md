@@ -1,5 +1,5 @@
 # About
-REST api created with expressjs and mysql. Database using the Third normal form for associations. An api for getting different cocktails. Can query by name or ingredients. Can also get by :id.
+REST API created with expressjs and mysql. Database using the Third normal form for associations. An api for getting, posting, putting and deleting different cocktails. The API supports querying by name and ingredients. It also supports pagination in the form of size and page (limit and offset). You can get a cocktail by id or delete it by id.
 
 # Technologies Used
 * Node.js
@@ -46,9 +46,34 @@ HOST = "localhost"
 * ``GET /api/cocktails/:id``: Retrieves a specific cocktail by ID.
 * ``GET /api/cocktails?name=name``: queries by name
 * ``GET /api/cocktails?ingredients=ingredient, ingreedient``: queries by ingredients
-* ``POST /api/cocktails``: Creates a new cocktail. (WIP)
+* ``GET /api/cocktails?page=1&size=2``: pagination for page and size
+* ``POST /api/cocktails``: Creates a new cocktail.
 * ``PUT /api/cocktails/:id``: Updates a cocktail by ID. (WIP)
-* ``DELETE /api/cocktails/:id``: Deletes a cocktail by ID. (WIP)
+* ``DELETE /api/cocktails/:id``: Deletes a cocktail by ID.
+
+## Examples
+Post could look like this:
+
+```json
+
+     {
+        "name": "Radler",
+        "description": "A popular drink.",
+        "ingredients": [
+            {
+                "name": "Sprite",
+                "cocktailIngredient": {
+                    "quantity": "300 ml"
+                }
+            },
+            {
+                "name": "Beer",
+                "cocktailIngredient": {
+                    "quantity": "500 ml"
+                }
+            }]
+     }
+```
 
 
 # Database example insert

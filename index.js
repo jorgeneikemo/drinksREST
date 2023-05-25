@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 //new
 const cocktailRouter = require('./routes/cocktails');
 require('dotenv').config()
-require('./redis')
 
 const PORT = process.env.port;
 const app = express();
