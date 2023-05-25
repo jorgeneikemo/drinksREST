@@ -18,10 +18,7 @@ REST API created with expressjs and mysql. Database using the Third normal form 
    ```sql
    CREATE DATABASE cocktails;
    ```
-4. .env
-   ```
-   Create .env file and add the environment variables provided below.
-   ```
+4. Create .env file and add the environment variables provided below.
 5. Run the app to create all the tables in the database
    ```js
    npm start
@@ -74,9 +71,10 @@ Post could look like this:
             }]
      }
 ```
+## Database structure
+![database structure](https://github.com/jorgeneikemo/drinksREST/blob/master/db_diagram.png?raw=true)
 
-
-# Database example insert
+## Database example insert
 ```sql
 INSERT INTO cocktails (name, description) VALUES 
 ("Mojito", "A Cuban classic, the Mojito is a refreshing blend of rum, mint, lime, sugar, and soda water"),
