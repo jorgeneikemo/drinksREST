@@ -1,12 +1,15 @@
 module.exports = (sequelize) => {
-    const { DataTypes, Model } = require('sequelize');
+  const { DataTypes, Model } = require("sequelize");
 
-    class Cocktail extends Model {}
-    Cocktail.init({
-        name: DataTypes.STRING,
-        img: DataTypes.STRING,
-        description: DataTypes.TEXT
-    }, { sequelize, modelName: 'cocktail', timestamps: false });
+  class Cocktail extends Model {}
+  Cocktail.init(
+    {
+      name: DataTypes.STRING,
+      img: DataTypes.STRING,
+      description: DataTypes.TEXT,
+    },
+    { sequelize, modelName: "cocktail", timestamps: false }
+  );
 
-    return Cocktail;
+  return Cocktail;
 };

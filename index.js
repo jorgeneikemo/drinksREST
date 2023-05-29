@@ -1,9 +1,9 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+const express = require("express");
+const bodyParser = require("body-parser");
 //const cocktailsRouter = require('./routes/cocktails');
 //new
-const cocktailRouter = require('./routes/cocktails');
-require('dotenv').config()
+const cocktailRouter = require("./routes/cocktails");
+require("dotenv").config();
 
 const PORT = process.env.port;
 const app = express();
@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //Routes
 //app.use('/cocktails', cocktailsRouter);
 //new
-app.use('/cocktails', cocktailRouter);
+app.use("/cocktails", cocktailRouter);
 
 // Server start
 app.listen(PORT, () => {

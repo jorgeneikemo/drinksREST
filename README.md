@@ -1,11 +1,13 @@
 # About
+
 REST API created with expressjs and mysql. Database using the Third normal form for associations. An api for getting, posting, putting and deleting different cocktails. The API supports querying by name and ingredients. It also supports pagination in the form of size and page (limit and offset). You can get a cocktail by id or delete it by id.
 
 # Technologies Used
-* Node.js
-* Express.js
-* MySQL
-* Sequelize
+
+- Node.js
+- Express.js
+- MySQL
+- Sequelize
 
 # Application Installation and Usage Instructions
 
@@ -27,6 +29,7 @@ REST API created with expressjs and mysql. Database using the Third normal form 
 7. Call the API
 
 # Environment Variables
+
 ```sh
 DATABASE_USERNAME = "username"
 DATABASE_PASSWORD = "password"
@@ -39,73 +42,78 @@ HOST = "localhost"
 
 # Api Endpoints
 
-* ``GET /api/cocktails``: Retrieves a list of all cocktails.
-* ``GET /api/cocktails/:id``: Retrieves a specific cocktail by ID.
-* ``GET /api/cocktails?name=name``: queries by name
-* ``GET /api/cocktails?ingredients=ingredient, ingreedient``: queries by ingredients
-* ``GET /api/cocktails?page=1&size=2``: pagination for page and size
-* ``POST /api/cocktails``: Creates a new cocktail.
-* ``PUT /api/cocktails/:id``: Updates a cocktail by ID.
-* ``DELETE /api/cocktails/:id``: Deletes a cocktail by ID.
+- `GET /api/cocktails`: Retrieves a list of all cocktails.
+- `GET /api/cocktails/:id`: Retrieves a specific cocktail by ID.
+- `GET /api/cocktails?name=name&ingredients=gin`: Queries by name and/or ingredients
+- `GET /api/cocktails?page=1&size=2`: pagination for page and/or size
+- `POST /api/cocktails`: Creates a new cocktail.
+- `PUT /api/cocktails/:id`: Updates a cocktail by ID.
+- `DELETE /api/cocktails/:id`: Deletes a cocktail by ID.
 
 ## Examples
-* Post example:
-```json
 
-     {
-        "name": "Radler",
-        "description": "A popular drink.",
-        "img": "https://www.spectator.co.uk/wp-content/uploads/2023/05/Drink-iStock.jpg",
-        "ingredients": [
-            {
-                "name": "Sprite",
-                "cocktailIngredient": {
-                    "quantity": "300 ml"
-                }
-            },
-            {
-                "name": "Beer",
-                "cocktailIngredient": {
-                    "quantity": "500 ml"
-                }
-            }]
-     }
+- POST example:
+
+```json
+{
+  "name": "Radler",
+  "description": "A popular drink.",
+  "img": "https://www.spectator.co.uk/wp-content/uploads/2023/05/Drink-iStock.jpg",
+  "ingredients": [
+    {
+      "name": "Sprite",
+      "cocktailIngredient": {
+        "quantity": "300 ml"
+      }
+    },
+    {
+      "name": "Beer",
+      "cocktailIngredient": {
+        "quantity": "500 ml"
+      }
+    }
+  ]
+}
 ```
 
-* Put example
+- PUT example:
+
 ```json
-     {
-        "name": "Radler v.2",
-        "description": "A very nice drink.",
-        "img": "https://www.spectator.co.uk/wp-content/uploads/2023/05/Drink-iStock.jpg",
-        "ingredients": [
-            {
-                "name": "Sprite",
-                "cocktailIngredient": {
-                    "quantity": "50 ml"
-                }
-            },
-            {
-                "name": "Beer",
-                "cocktailIngredient": {
-                    "quantity": "1000 ml"
-                }
-            },
-            {
-                "name": "Lime",
-                "cocktailIngredient": {
-                    "quantity": "A generous squeeze"
-                }
-            }]
-     }
+{
+  "name": "Radler v.2",
+  "description": "A very nice drink.",
+  "img": "https://www.spectator.co.uk/wp-content/uploads/2023/05/Drink-iStock.jpg",
+  "ingredients": [
+    {
+      "name": "Sprite",
+      "cocktailIngredient": {
+        "quantity": "50 ml"
+      }
+    },
+    {
+      "name": "Beer",
+      "cocktailIngredient": {
+        "quantity": "1000 ml"
+      }
+    },
+    {
+      "name": "Lime",
+      "cocktailIngredient": {
+        "quantity": "A generous squeeze"
+      }
+    }
+  ]
+}
 ```
 
 ## Database structure
-![database structure](https://github.com/jorgeneikemo/drinksREST/blob/master/db_diagram.png?raw=true)
+
+![database structure](https://github.com/jorgeneikemo/drinksREST/blob/master/public/db_diagram.png?raw=true)
 
 ## Database example insert
+
 ```sql
-INSERT INTO cocktails (name, description, img) VALUES 
+INSERT INTO cocktails (name, description, img) VALUES
 ("Mojito", "A Cuban classic, the Mojito is a refreshing blend of rum, mint, lime, sugar, and soda water", "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/mojito-cocktails-150961e.jpg"),
 ("Margarita", "A popular tequila-based cocktail, Margarita is a blend of tequila, lime juice, and Cointreau, served with salt on the rim of the glass", "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/mojito-cocktails-150961e.jpg"),
 ("Bloody Mary", "A classic brunch cocktail, the Bloody Mary is a mix of vodka, tomato juice, and various spices", "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/mojito-cocktails-150961e.jpg"),
@@ -117,7 +125,7 @@ INSERT INTO cocktails (name, description, img) VALUES
 ("Whiskey Sour", "A classic whiskey cocktail, the Whiskey Sour blends whiskey, lemon juice, and sugar, topped with a dash of egg white", "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/mojito-cocktails-150961e.jpg"),
 ("Old Fashioned", "A true classic, the Old Fashioned is a simple blend of whiskey, sugar, and bitters, garnished with an orange twist", "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/mojito-cocktails-150961e.jpg");
 
-INSERT INTO ingredients (name) VALUES 
+INSERT INTO ingredients (name) VALUES
 ("Rum"), ("Mint"),("Sugar"),("Lime"),("Soda Water"),("Tequila"),("Cointreau"),("Vodka"),
 ("Tomato Juice"),("Spices"),("Gin"),("Vermouth Rosso"),("Campari"),("Coconut Milk"),
 ("Pineapple Juice"),("Triple Sec"),("Cranberry Juice"),("Whiskey"),("Egg White"),
