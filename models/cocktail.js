@@ -4,6 +4,7 @@ module.exports = (sequelize) => {
     class Cocktail extends Model {}
     Cocktail.init({
         name: DataTypes.STRING,
+        img: DataTypes.STRING,
         description: DataTypes.TEXT
     }, { sequelize, modelName: 'cocktail', timestamps: false });
 
