@@ -7,7 +7,7 @@ const cocktail = require("../models/cocktail");
 
 //For local testing purposes
 router.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://127.0.0.1:5500");
+  res.header("Access-Control-Allow-Origin", "http://localhost:5173");
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
   res.header(
     "Access-Control-Allow-Headers",
@@ -144,24 +144,60 @@ router.post("/", async (req, res, next) => {
 //Delete a cocktail by id
 router.delete("/:id", async (req, res, next) => {
   try {
-    //Get thee provided ID and attempt to delete the cocktail.
     const id = req.params.id;
-    const deletedRows = await Cocktail.destroy({
+
+    const t = await sequelize.transaction();
+
+    const cocktail = await Cocktail.findOne({
+      where: { id: id },
+      include: "ingredients",
+      transaction: t,
+    });
+
+    if (!cocktail) {
+      res.status(404).send({ message: `Cocktail with id ${id} not found.` });
+      await t.rollback();
+      return;
+    }
+
+    // Remember the ingredients
+    const ingredients = cocktail.ingredients;
+
+    // Delete the cocktail
+    await Cocktail.destroy({
       where: {
         id: id,
       },
+      transaction: t,
     });
 
-    //Check if deleted or not
-    if (deletedRows) {
-      res
-        .status(200)
-        .send({ message: `Cocktail with id ${id} deleted successfully.` });
-    } else {
-      res.status(404).send({ message: `Cocktail with id ${id} not found.` });
+    // Check each ingredient if it is being used by other cocktails
+    for (let ingredient of ingredients) {
+      const usedElsewhere = await Cocktail.findOne({
+        include: {
+          model: Ingredient,
+          where: { id: ingredient.id },
+          as: "ingredients",
+        },
+        transaction: t,
+      });
+
+      // If not used elsewhere, delete the ingredient
+      if (!usedElsewhere) {
+        await Ingredient.destroy({
+          where: { id: ingredient.id },
+          transaction: t,
+        });
+      }
     }
-    //Catch any eventual errors.
+
+    await t.commit();
+
+    res.status(200).send({ message: `Cocktail with id ${id} deleted.` });
   } catch (error) {
+    if (t) {
+      await t.rollback();
+    }
     next(error);
   }
 });

@@ -24,11 +24,20 @@ const CocktailIngredient = require("./cocktailIngredient")(sequelize);
 
 // Define the associations between models
 Cocktail.belongsToMany(Ingredient, {
-  through: CocktailIngredient,
+  through: {
+    model: CocktailIngredient,
+    unique: false,
+  },
+  foreignKey: "cocktailId",
   as: "ingredients",
 });
+
 Ingredient.belongsToMany(Cocktail, {
-  through: CocktailIngredient,
+  through: {
+    model: CocktailIngredient,
+    unique: false,
+  },
+  foreignKey: "ingredientId",
   as: "cocktails",
 });
 
